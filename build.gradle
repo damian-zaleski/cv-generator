@@ -12,10 +12,22 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0-M1'
-    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+    def junitJupiterVersion = '5.7.0-M1'
+    def mockitoVersion = '3.3.3'
+
+    implementation "org.xhtmlrenderer:flying-saucer-pdf-openpdf:9.1.20"
+    implementation "com.github.spullara.mustache.java:compiler:0.9.6"
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}")
+    testImplementation("org.assertj:assertj-core:3.16.1")
+    testImplementation("org.mockito:mockito-core:${mockitoVersion}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${mockitoVersion}")
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'file-created'
+    }
 }
