@@ -1,0 +1,83 @@
+<html>
+<head>
+    <style>
+        @page {
+            @bottom-right {
+                font-family: "Arial", sans-serif;
+                font-size: 12px;
+                content: "Page " counter(page) " of " counter(pages);
+            }
+            margin: 3cm 3cm;
+            size: A4;
+        }
+    </style>
+</head>
+<body>
+
+{{#personDetail}}
+    <div style="clear:both">
+        <div style="text-align: center;">
+            <h1>{{firstName}} {{lastName}}</h1>
+            <p>{{city}} | {{phoneNumber}} | {{email}}</p>
+            {{#links}}
+                <p>{{name}}: {{url}}</p>
+            {{/links}}
+        </div>
+    </div>
+    <div style="background-color:#b5dcb3; clear:both">
+        <div style="text-align: center;">
+            Executive summary
+        </div>
+    </div>
+    <p>{{summaryAboutMe}}</p>
+
+    <div style="background-color:#b5dcb3; clear:both">
+        <div style="text-align: center;">
+            Skills
+        </div>
+    </div>
+    <p>
+        {{#skills}}
+            {{name}}
+        {{/skills}}
+    </p>
+    <div style="background-color:#b5dcb3; clear:both">
+        <div style="text-align: center;">
+            Experience
+        </div>
+    </div>
+    {{#experiences}}
+        <p>{{title}} - {{company}} - {{location}}</p>
+        <p>{{startDate}} - {{endDate}}</p>
+        <p>{{description}}</p>
+        <br/>
+    {{/experiences}}
+
+    <div style="background-color:#b5dcb3; clear:both">
+        <div style="text-align: center;">
+            Education
+        </div>
+    </div>
+    {{#educations}}
+        <p>{{school}} - {{degree}} - {{fieldOfStudy}}</p>
+        {{#dateRange}}
+            <p>{{start}} - {{end}}</p>
+        {{/dateRange}}
+    {{/educations}}
+    <div style="background-color:#b5dcb3; clear:both">
+        <div style="text-align: center;">
+            Certificates
+        </div>
+    </div>
+    {{#certificates}}
+        <p>{{name}} - {{organisation}} - {{createdAt}}</p>
+    {{/certificates}}
+
+
+
+{{/personDetail}}
+</body>
+<footer>
+    {{footer}}
+</footer>
+</html>
